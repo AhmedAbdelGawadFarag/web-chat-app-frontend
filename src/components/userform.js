@@ -5,42 +5,40 @@ class UserForm extends React.Component {
 
   onFormSubmit(res) {
     res.preventDefault();
-    this.props.callapi({name:this.state.name,password:this.state.password});    
+    this.props.callapi({
+      name: this.state.name,
+      password: this.state.password,
+    });
   }
 
   render() {
     return (
-      <div>
-        <form
-          id="user-form"
-          className="ui form"
-          onSubmit={(res) => this.onFormSubmit(res)}
-        >
-          <div className="field">
-            <label htmlFor="user-name">name:</label>
-            <input
-              value={this.state.name}
-              id="user-name"
-              type="text"
-              onChange={(res) => this.setState({ name: res.target.value })}
-            ></input>
-          </div>
+      <form onSubmit={(res) => this.onFormSubmit(res)}>
+        <div className="form-floating mb-3">
+          <input
+            type="text"
+            className="form-control"
+            id="floatingInput"
+            placeholder="Uesr name"
+            value={this.state.name}
+            onChange={(res)=>this.setState({name:res.target.value})}
+          ></input>
+        </div>
 
-          <div className="field">
-            <label htmlFor="user-password"> password: </label>
-            <input
-              value={this.state.password}
-              onChange={(res) => this.setState({ password: res.target.value })}
-              id="user-password"
-              type="password"
-            ></input>
-          </div>
+        <div className="form-floating">
+          <input
+            type="password"
+            className="form-control"
+            id="floatingPassword"
+            placeholder="Password"
+            value={this.state.password}
+            onChange={(res)=>this.setState({password:res.target.value})}
+          />
 
-          <button className="ui button" type="submit">
-            Submit
-          </button>
-        </form>
-      </div>
+
+          <input className="btn btn-primary" type="submit" value="Submit" />
+        </div>
+      </form>
     );
   }
 }
