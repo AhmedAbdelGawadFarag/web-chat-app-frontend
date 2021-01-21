@@ -1,27 +1,24 @@
 import React from "react";
 import "../css/form.css";
 class UserForm extends React.Component {
-  state = { name: "", password: "" };
+  state = { password: "", email: "" };
 
-  onFormSubmit(res) {
-    res.preventDefault();
-    this.props.callapi({
-      name: this.state.name,
-      password: this.state.password,
-    });
+  onFormSubmit() {
+    console.log("submitted");
+    this.props.callapi(this.state);
   }
 
   render() {
     return (
-      <form onSubmit={(res) => this.onFormSubmit(res)}>
+      <div>
         <div className="form-floating mb-3">
           <input
-            type="text"
+            type="email"
             className="form-control"
             id="floatingInput"
-            placeholder="Uesr name"
-            value={this.state.name}
-            onChange={(res)=>this.setState({name:res.target.value})}
+            placeholder="email"
+            value={this.state.email}
+            onChange={(res) => this.setState({ email: res.target.value })}
           ></input>
         </div>
 
@@ -32,13 +29,12 @@ class UserForm extends React.Component {
             id="floatingPassword"
             placeholder="Password"
             value={this.state.password}
-            onChange={(res)=>this.setState({password:res.target.value})}
+            onChange={(res) => this.setState({ password: res.target.value })}
           />
 
-
-          <input className="btn btn-primary" type="submit" value="Submit" />
+          <input className="btn btn-primary" type="submit" value="Submit" onClick={() => this.onFormSubmit()} />
         </div>
-      </form>
+      </div>
     );
   }
 }
