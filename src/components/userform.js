@@ -13,10 +13,11 @@ class UserForm extends React.Component {
       <div>
         <div className="form-floating mb-3">
           <input
+            required
             type="email"
             className="form-control"
             id="floatingInput"
-            placeholder="email"
+            placeholder="Email"
             value={this.state.email}
             onChange={(res) => this.setState({ email: res.target.value })}
           ></input>
@@ -24,6 +25,7 @@ class UserForm extends React.Component {
 
         <div className="form-floating">
           <input
+            required
             type="password"
             className="form-control"
             id="floatingPassword"
