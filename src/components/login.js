@@ -1,12 +1,16 @@
 import React from "react";
 import UserForm from "./userform";
 import Rails from "../api/rails";
+import { Redirect } from "react-router-dom";
 class Login extends React.Component {
   state = { error: {} }
+
   authenticateUser(userdata) {
     Rails.post("/auth", {
       user: userdata,
-    }).catch((err) => this.setState({ errors: err.response.data }))
+    })
+      .then((res) => { this.props.history.push("./users/home") })
+      .catch((err) => this.setState({ errors: err.response.data }))
 
   }
 

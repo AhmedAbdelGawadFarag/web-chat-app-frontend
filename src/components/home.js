@@ -6,6 +6,7 @@ const Home = () => {
 
       <Link to="/login">log in</Link>
       <Link to="/users/new">sign up</Link>
+      
     </div>
   );
 };
