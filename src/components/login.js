@@ -1,15 +1,24 @@
 import React from "react";
 import UserForm from "./userform";
 import Rails from "../api/rails";
-import { Redirect } from "react-router-dom";
+import jwtToken from "../jwtToken";
+import cookie from "universal-cookie";
 class Login extends React.Component {
   state = { error: {} }
+
+  handleLogin(response) {
+
+    let token = jwtToken.encode(response.data.user.id);//encode the user id in token
+    let ck = new cookie();
+    ck.set("token", token);
+    this.props.history.push("./users/home")
+  }
 
   authenticateUser(userdata) {
     Rails.post("/auth", {
       user: userdata,
     })
-      .then((res) => { this.props.history.push("./users/home") })
+      .then((res) => { this.handleLogin(res) })
       .catch((err) => this.setState({ errors: err.response.data }))
 
   }
