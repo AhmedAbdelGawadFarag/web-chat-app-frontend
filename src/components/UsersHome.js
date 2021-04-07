@@ -1,13 +1,16 @@
 import React from 'react';
 import ChatCards from './ChatCards';
-class UserHome extends React.Component{
+import '../css/userhomepage.css';
+import MessageBox from "./MessageBox";
+class UserHome extends React.Component {
 
 
-    render(){
+    render() {
 
-        return(
-            <div>
+        return (
+            <div className="user-home">
                 <ChatCards></ChatCards>
+                <MessageBox></MessageBox>
             </div>
         );
 
