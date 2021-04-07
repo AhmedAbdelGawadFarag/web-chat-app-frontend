@@ -1,19 +1,29 @@
 import React from 'react';
 import "../css/friend.css";
-import faker from "faker";
-
+import Rails from "../api/rails";
+import CurrentUser from "../currentUser";
+import Message from "./Message";
 
 class Friend extends React.Component {
-    whenClicked(event) {
+    renderMessages(res) {
+        console.log(res.data);
+        let messages = res.data.map((message) => <Message key={message.id} image={this.props.image} data={message.body}></Message>);
+        this.props.showChat(messages);
+    }
+    getMessages(event) {
         event.preventDefault();
+        let userid = CurrentUser.getid();
+        Rails.get(`/users/${userid}/friendships/${this.props.id}/messages`)
+            .then((res) => this.renderMessages(res))
+            .catch((res) => console.log(res));
     }
     render() {
         return (
-            <button type="button" class="btn btn-outline-info">
+            <button type="button" className="btn btn-outline-info" onClick={(event) => this.getMessages(event)}>
                 <div id={this.props.id} className="friend">
 
                     <div>
-                        <img className="friend-image" alt="img" src={faker.image.avatar()}></img>
+                        <img className="friend-image" alt="img" src={this.props.image}></img>
                     </div>
                     <div className="friend-data">
                         <h5>  {this.props.userName}</h5>
