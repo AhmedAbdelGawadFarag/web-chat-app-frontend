@@ -7,7 +7,7 @@ class MessageBox extends React.Component {
 
         return (
             <div>
-              
+                <input type="text" class="form-control" placeholder="Type a message" />
             </div >
         );
     }
