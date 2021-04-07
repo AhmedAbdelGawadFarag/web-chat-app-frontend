@@ -1,6 +1,6 @@
 import React from 'react';
 
-class MessageBox extends React.Component {
+class ChatBox extends React.Component {
 
 
     render() {
@@ -13,4 +13,4 @@ class MessageBox extends React.Component {
     }
 
 }
-export default MessageBox;
+export default ChatBox;

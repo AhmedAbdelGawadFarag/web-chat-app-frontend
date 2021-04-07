@@ -1,7 +1,7 @@
 import React from 'react';
-import ChatCards from './ChatCards';
+import FriendsBox from './FriendsBox';
 import '../css/userhomepage.css';
-import MessageBox from "./MessageBox";
+import MessageBox from "./ChatBox";
 class UserHome extends React.Component {
 
 
@@ -9,7 +9,7 @@ class UserHome extends React.Component {
 
         return (
             <div className="user-home">
-                <ChatCards></ChatCards>
+                <FriendsBox></FriendsBox>
                 <MessageBox></MessageBox>
             </div>
         );

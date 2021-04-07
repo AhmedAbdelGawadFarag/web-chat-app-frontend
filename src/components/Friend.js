@@ -1,21 +1,21 @@
 import React from 'react';
-import "../css/chat.css";
+import "../css/friend.css";
 import faker from "faker";
 
 
-class Chat extends React.Component {
+class Friend extends React.Component {
     whenClicked(event) {
         event.preventDefault();
     }
     render() {
         return (
             <button type="button" class="btn btn-outline-info">
-                <div id={this.props.id} className="user-chat">
+                <div id={this.props.id} className="friend">
 
                     <div>
-                        <img className="chat-image" alt="img" src={faker.image.avatar()}></img>
+                        <img className="friend-image" alt="img" src={faker.image.avatar()}></img>
                     </div>
-                    <div className="user-data">
+                    <div className="friend-data">
                         <h5>  {this.props.userName}</h5>
                         <h5> {this.props.userEmail}</h5>
                     </div>
@@ -30,4 +30,4 @@ class Chat extends React.Component {
     }
 }
 
-export default Chat;
+export default Friend;

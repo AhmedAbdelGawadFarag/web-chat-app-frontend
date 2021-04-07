@@ -1,10 +1,10 @@
 import React from 'react';
-import Chat from './Chat';
+import Friend from './Friend';
 import jwtToken from "../jwtToken";
 import cookie from "universal-cookie";
 import Rails from '../api/rails';
-
-class ChatCards extends React.Component {
+import  "../css/friendcontainer.css";
+class FriendsBox extends React.Component {
     state = { friends: [] }
     componentDidMount() {
         this.getUsersData();
@@ -28,14 +28,14 @@ class ChatCards extends React.Component {
     }
 
     render() {
-        let friends = this.state.friends.map((friend) => <Chat id={friend.id} key={friend.id} userName={friend.name} userEmail={friend.email}></Chat>);
+        let friends = this.state.friends.map((friend) => <Friend id={friend.id} key={friend.id} userName={friend.name} userEmail={friend.email}></Friend>);
         
         return (
-            <div className="chat-container">
+            <div className="friends-container">
                 {friends}
             </div>
         );
     }
 }
 
-export default ChatCards;
+export default FriendsBox;
