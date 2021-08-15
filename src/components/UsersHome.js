@@ -23,7 +23,7 @@ class UserHome extends React.Component {
     getUsersData() {
         let userid = CurrentUser.getid();
         Rails.get(`/users/${userid}/friendships`)
-            .then((res) => this.setState({ friends: res.data.friends.map((friend) => <Friend showChat={(messages) => this.showChat(messages)} image={faker.image.avatar()} id={friend.id} key={friend.id} userName={friend.name} userEmail={friend.email}></Friend>) }))
+            .then((res) => this.setState({ friends: res.data.map((friend) => <Friend showChat={(messages) => this.showChat(messages)} image={faker.image.avatar()} id={friend.id} key={friend.id} userName={friend.name} userEmail={friend.email}></Friend>) }))
             .catch((res) => console.log(res));
     }
 
