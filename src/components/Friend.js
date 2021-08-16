@@ -8,7 +8,7 @@ class Friend extends React.Component {
 
     renderMessages(res) {
         let messages = res.data.map((message) => <Message user_id = {message.sender_id} key={message.id} data={message.body}></Message>);
-        this.props.showChat(messages);
+        this.props.showChat(messages,this.props.id);
     }
 
     getMessages(event) {
