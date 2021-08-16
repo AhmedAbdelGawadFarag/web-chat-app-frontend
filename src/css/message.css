@@ -1,5 +1,12 @@
 .message-data{
 
     width: 200px;
+    
 }
-
+.message{
+    display: flex;
+}
+/* .message-box{ */
+    /* display: flex; */
+    /* flex-direction: column; */
+/* } */

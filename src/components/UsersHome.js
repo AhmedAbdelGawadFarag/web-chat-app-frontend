@@ -6,6 +6,7 @@ import Rails from '../api/rails';
 import Friend from './Friend';
 import faker from "faker";
 import ChatBox from "./ChatBox";
+import '../css/messageBox.css';
 
 class UserHome extends React.Component {
     state = { friends: [], currentChat: <ChatBox></ChatBox> }
@@ -34,7 +35,7 @@ class UserHome extends React.Component {
                 <div>
                     <FriendsBox friends={this.state.friends}></FriendsBox>
                 </div>
-                <div>
+                <div className="message-box">
                     {this.state.currentChat}
                 </div>
             </div>

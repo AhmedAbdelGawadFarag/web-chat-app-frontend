@@ -5,11 +5,12 @@ import CurrentUser from "../currentUser";
 import Message from "./Message";
 
 class Friend extends React.Component {
+
     renderMessages(res) {
-        console.log(res.data);
-        let messages = res.data.map((message) => <Message key={message.id} image={this.props.image} data={message.body}></Message>);
+        let messages = res.data.map((message) => <Message user_id = {message.sender_id} key={message.id} data={message.body}></Message>);
         this.props.showChat(messages);
     }
+
     getMessages(event) {
         event.preventDefault();
         let userid = CurrentUser.getid();
@@ -17,6 +18,7 @@ class Friend extends React.Component {
             .then((res) => this.renderMessages(res))
             .catch((res) => console.log(res));
     }
+
     render() {
         return (
             <button type="button" className="btn btn-outline-info" onClick={(event) => this.getMessages(event)}>
@@ -25,6 +27,7 @@ class Friend extends React.Component {
                     <div>
                         <img className="friend-image" alt="img" src={this.props.image}></img>
                     </div>
+
                     <div className="friend-data">
                         <h5>  {this.props.userName}</h5>
                         <h5> {this.props.userEmail}</h5>
@@ -38,6 +41,7 @@ class Friend extends React.Component {
 
 
     }
+
 }
 
 export default Friend;

@@ -1,15 +1,28 @@
 import React from 'react';
-import "../css/message.css"
+import "../css/message.css";
+import user from "../currentUser";
+
 class Message extends React.Component {
 
-    render() {
-        return (
+    get_render_pos(){
+        
+        if(user.getid() == this.props.user_id) return "flex-end";
 
-            <div className="bg-light rounded py-2 px-3 mb-2 message-data">
-                <img className="friend-image"  alt="img" src={"http://pm1.narvii.com/6290/9daddc43d903f1fc591697dd11edb894e85b35f7_00.jpg"}></img>
-                <p>  {this.props.data}</p>
+        return "flex-start";
+
+    }
+        
+
+    render() {
+
+        return (
+            <div className="message" style={{justifyContent:this.get_render_pos()}}>
+                <div className="bg-light rounded py-2 px-3 mb-2"  >
+                    <p className="message-data">  {this.props.data}</p>
+                </div>
             </div>
         );
+
     }
 
 

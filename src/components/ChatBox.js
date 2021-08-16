@@ -10,11 +10,10 @@ class ChatBox extends React.Component {
 
     render() {
         return (
-            <div>
-              <div>
-                  {this.props.messages}
-              </div>
-
+            <div >
+    
+              {this.props.messages}
+              
                 {/* <input type="text" className="form-control" placeholder="Type a message" /> */}
             </div >
         );
