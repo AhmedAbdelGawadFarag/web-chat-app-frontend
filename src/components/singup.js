@@ -28,7 +28,7 @@ class SignUp extends React.Component {
 
     return (
       <div>
-        { errorsarr}
+        {errorsarr}
       </div>
     );
   }
@@ -37,7 +37,7 @@ class SignUp extends React.Component {
     return (
       <div className="user-form">
         <form onSubmit={(res) => res.preventDefault()}>
-          
+
           <h1>Sign up now</h1>
 
           {this.state.errors !== [] ? this.showError() : ""}
