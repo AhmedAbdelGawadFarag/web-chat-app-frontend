@@ -25,26 +25,18 @@ class ChatBox extends React.Component {
     }
 
     append_message(message) {
-        //console.log(message);
-
-        let currmessage = [message].map((m) => <Message user_id={m.sender_id} key={m.id} data={m.body}></Message>);
-        this.state.typed_messages.push(currmessage[0]);
-
-        this.setState({ typed_messages: this.state.typed_messages });
-
+        this.setState({ typed_messages: [...this.state.typed_messages, <Message user_id={message.sender_id} key={message.id} data={message.body}></Message>] });
     }
 
-     render() {
-        //  console.log("RENDERFUC");
-        //   console.log(this.state.typed_messages);
+    render() {
         return (
-            <div>
+            <div className="message-box">
 
                 {this.props.messages}
 
-                <div>
-                    {this.state.typed_messages}
-                </div>
+                {/* <div> */}
+                {this.state.typed_messages}
+                {/* </div> */}
 
                 <form onSubmit={(data) => this.send_message(data)}>
                     <input
@@ -59,6 +51,7 @@ class ChatBox extends React.Component {
                 <ActionCableConsumer channel={{ channel: "ChatChannel" }} onReceived={(message) => this.append_message(message)}>
 
                 </ActionCableConsumer>
+
 
 
             </div>

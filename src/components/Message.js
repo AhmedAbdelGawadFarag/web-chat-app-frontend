@@ -16,7 +16,7 @@ class Message extends React.Component {
     render() {
 
         return (
-            <div className="message" style={{ justifyContent: this.get_render_pos() }}>
+            <div className="message" style={{alignSelf:this.get_render_pos()}}>
                 <div className="bg-light rounded py-2 px-3 mb-2"  >
                     <p className="message-data">  {this.props.data}</p>
                 </div>

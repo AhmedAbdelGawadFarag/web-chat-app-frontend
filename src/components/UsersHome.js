@@ -41,9 +41,9 @@ class UserHome extends React.Component {
                     <div>
                         <FriendsBox friends={this.state.friends}></FriendsBox>
                     </div>
-                    <div className="message-box">
-                        {this.state.currentChat}
-                    </div>
+                    
+                    {this.state.currentChat}
+
                 </ActionCableProvider>
             </div>
 
