@@ -9,7 +9,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 class App extends React.Component {
   render() {
     return (
-      <div  style={{ height: "100%", width: "100%",borderTop:"1px solid white"}}>
+      <div  style={{ height: "100%", width: "100%",borderTop:"1px solid white",backgroundColor:"#F4F5FB"}}>
         <BrowserRouter>
           <Switch>
             <Route path="/" exact component={Home}></Route>

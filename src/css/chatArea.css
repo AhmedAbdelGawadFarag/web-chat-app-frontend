@@ -1,5 +1,7 @@
 .chat-area{
 
-    flex:1
-
+    flex:1;
+    border-style: ridge;
+    border-radius: 1%;
+    margin-left: 1%;
 }
