@@ -1,6 +1,6 @@
-.message-data{
-    width: 200px;    
-}
+
 .message{
     width: fit-content;   
+    word-wrap: break-word;
+    max-width: 30%;
 }

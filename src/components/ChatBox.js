@@ -4,6 +4,7 @@ import Rails from "../api/rails";
 import User from "../currentUser";
 import { ActionCableConsumer } from "react-actioncable-provider";
 import Message from "./Message";
+import "../css/chatArea.css";
 class ChatBox extends React.Component {
     state = { text: "", typed_messages: [] };//typed_messages is diffrenet from props.messages
 
@@ -30,13 +31,17 @@ class ChatBox extends React.Component {
 
     render() {
         return (
-            <div className="message-box">
+            <div className="chat-area" >
 
-                {this.props.messages}
+                <div className="message-box">
 
-                {/* <div> */}
-                {this.state.typed_messages}
-                {/* </div> */}
+                    {this.props.messages}
+
+                    {/* <div> */}
+                    {this.state.typed_messages}
+                    {/* </div> */}
+
+                </div>
 
                 <form onSubmit={(data) => this.send_message(data)}>
                     <input

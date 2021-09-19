@@ -7,21 +7,21 @@ import PrivateRoute from "./PrivateRoute";
 
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 class App extends React.Component {
-
-
   render() {
     return (
-      <div>
+      <div  style={{ height: "100%", width: "100%",borderTop:"1px solid white"}}>
         <BrowserRouter>
           <Switch>
             <Route path="/" exact component={Home}></Route>
             <Route path="/login" component={Login}></Route>
             <Route path="/users/new" component={SignUp}></Route>
-            <PrivateRoute exact path="/users/home" component={UserHome}></PrivateRoute>
+            <PrivateRoute
+              exact
+              path="/users/home"
+              component={UserHome}
+            ></PrivateRoute>
             <Route path="*">
-              <div>
-                404 not found
-              </div>
+              <div>404 not found</div>
             </Route>
           </Switch>
         </BrowserRouter>
