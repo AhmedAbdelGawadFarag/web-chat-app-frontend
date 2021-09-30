@@ -4,10 +4,10 @@ import Rails from "../api/rails";
 import CurrentUser from "../currentUser";
 import Message from "./Message";
 
-class Friend extends React.Component {
+class Room extends React.Component {
 
     renderMessages(res) {
-        let messages = res.data.map((message) => <Message user_id={message.sender_id} key={message.id} data={message.body}></Message>);
+        let messages = res.data.map((message) => <Message sender_name={'~'+message.user_name} user_id={message.sender_id} key={message.id} data={message.body}></Message>);
         
         this.props.showChat(messages, this.props.id);
     }
@@ -15,7 +15,7 @@ class Friend extends React.Component {
     getMessages(event) {
         event.preventDefault();
         let userid = CurrentUser.getid();
-        Rails.get(`/users/${userid}/friendships/${this.props.id}/messages`)
+        Rails.get(`/users/${userid}/rooms/${this.props.id}`)
             .then((res) => this.renderMessages(res))
             .catch((res) => console.log(res));
     }
@@ -30,8 +30,7 @@ class Friend extends React.Component {
                     </div>
 
                     <div className="friend-data">
-                        <h5>  {this.props.userName}</h5>
-                        <h5> {this.props.userEmail}</h5>
+                        <h5>  {this.props.room_name}</h5>
                     </div>
 
                 </div>
@@ -45,4 +44,4 @@ class Friend extends React.Component {
 
 }
 
-export default Friend;
+export default Room;

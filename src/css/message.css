@@ -1,8 +1,12 @@
-
-.message{
-    width: fit-content;   
-    word-wrap: break-word;
-    max-width: 30%;
-    margin-top: 1%; 
+.message {
+  width: fit-content;
+  word-wrap: break-word;
+  max-width: 30%;
+  margin-top: 1%;
 }
-
+.message-data {
+  margin: auto;
+}
+.user-name {
+  color: blue;
+}

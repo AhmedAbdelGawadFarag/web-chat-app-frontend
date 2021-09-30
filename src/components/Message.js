@@ -8,11 +8,9 @@ class Message extends React.Component {
 
     if (user.getid() == this.props.user_id) {
       st.alignSelf = "flex-end";
-      st.backgroundColor = "white";
       st.marginRight = "1%";
     } else {
       st.alignSelf = "flex-start";
-      st.backgroundColor = "white";
       st.marginLeft = "1%";
     }
 
@@ -22,8 +20,9 @@ class Message extends React.Component {
   render() {
     return (
       <div className="message" style={this.get_render_pos()}>
-        <div className="rounded py-2 px-3 mb-2" s>
-          <p> {this.props.data}</p>
+        <div style={{backgroundColor:"white"}} className="rounded py-2 px-3 mb-2" s>
+          <p className="message-data user-name">{this.props.sender_name}</p>
+          <p className="message-data">{this.props.data}</p>
         </div>
       </div>
     );

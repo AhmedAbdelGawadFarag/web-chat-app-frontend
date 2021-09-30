@@ -13,11 +13,11 @@ class ChatBox extends React.Component {
         res.preventDefault();
 
         Rails.post(
-            `/users/${User.getid()}/friendships/${this.props.friend_id}/messages`,
+            `/messages`,
             {
                 body: this.state.text,
                 sender_id: User.getid(),
-                receiver_id: this.props.friend_id,
+                room_id: this.props.room_id,
             }
         )
             //  .then((res) => console.log(res))
@@ -26,6 +26,7 @@ class ChatBox extends React.Component {
     }
 
     append_message(message) {
+        console.log("received new message");
         this.setState({ typed_messages: [...this.state.typed_messages, <Message user_id={message.sender_id} key={message.id} data={message.body}></Message>] });
     }
 
