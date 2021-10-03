@@ -10,22 +10,26 @@ import "../css/messageBox.css";
 import { ActionCableProvider } from "react-actioncable-provider";
 
 class UserHome extends React.Component {
-  state = { friends: [], currentChat: <ChatBox></ChatBox> };
+  state = { rooms: [], currentChat: <ChatBox></ChatBox> };
 
   cnt = 0;
+
+  NeedRender(room_id) {
+    // console.log(room_id, this.state.currentChat.props.room_id);
+    if (this.state.currentChat.props.room_id === room_id) return true;
+    return false;
+  }
+
   componentDidMount() {
     this.getFriendsData();
   }
 
   showChat(messages, room_id) {
     //show chat with that messages
-    this.cnt += 1;
+    console.log("renderd");
+    // this.cnt += 1;
     let current = (
-      <ChatBox
-        key={this.cnt}
-        messages={messages}
-        room_id = {room_id}
-      ></ChatBox>
+      <ChatBox key={this.cnt} messages={messages} room_id={room_id}></ChatBox>
     );
     this.setState({ currentChat: current });
   }
@@ -34,6 +38,7 @@ class UserHome extends React.Component {
     let room_name = "";
 
     if (users.length === 2) {
+      console.log(CurrentUser.getid());
       if (CurrentUser.getid() != users[0].id) room_name = users[0].name;
       else room_name = users[1].name;
     } else {
@@ -56,13 +61,12 @@ class UserHome extends React.Component {
             room_name={this.getRoomName(room.users)}
             image={faker.image.avatar()}
             key={room.room_id}
-            showChat={(messages, room_id) =>
-              this.showChat(messages, room_id )
-            }
+            showChat={(messages, room_id) => this.showChat(messages, room_id)}
+            NeedRender={(room_id) => this.NeedRender(room_id)}
           ></Room>
         ));
 
-        this.setState({ friends: rooms });
+        this.setState({ rooms: rooms });
       })
 
       .catch((res) => console.log(res));
@@ -78,7 +82,7 @@ class UserHome extends React.Component {
             "/cable"
           }
         >
-          <FriendsBox friends={this.state.friends}></FriendsBox>
+          <FriendsBox friends={this.state.rooms}></FriendsBox>
 
           {this.state.currentChat}
         </ActionCableProvider>

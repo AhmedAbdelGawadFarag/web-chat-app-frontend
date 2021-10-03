@@ -6,7 +6,7 @@ import { ActionCableConsumer } from "react-actioncable-provider";
 import Message from "./Message";
 import "../css/chatArea.css";
 class ChatBox extends React.Component {
-    state = { text: "", typed_messages: [] };//typed_messages is diffrenet from props.messages
+    state = { text: ""};//typed_messages is diffrenet from props.messages
 
     send_message(res) {
 
@@ -25,12 +25,7 @@ class ChatBox extends React.Component {
 
     }
 
-    append_message(message) {
-        console.log("received new message");
-        this.setState({ typed_messages: [...this.state.typed_messages, <Message user_id={message.sender_id} key={message.id} data={message.body}></Message>] });
-    }
-
-    render() {
+       render() {
         return (
             <div className="chat-area" >
 
@@ -38,9 +33,6 @@ class ChatBox extends React.Component {
 
                     {this.props.messages}
 
-                    {/* <div> */}
-                    {this.state.typed_messages}
-                    {/* </div> */}
 
                 </div>
 
@@ -54,11 +46,7 @@ class ChatBox extends React.Component {
                     />
                 </form>
 
-                <ActionCableConsumer channel={{ channel: "ChatChannel" }} onReceived={(message) => this.append_message(message)}>
-
-                </ActionCableConsumer>
-
-
+               
 
             </div>
         );
